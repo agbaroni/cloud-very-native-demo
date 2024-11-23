@@ -3,7 +3,7 @@ kind: Application
 metadata:
   labels:
     app: cvnd
-  name: example
+  name: cvnd
   namespace: openshift-gitops
 spec:
   destination:
@@ -11,7 +11,5 @@ spec:
     server: https://kubernetes.default.svc.cluster.local
   project: cvnd
   source:
-    helm:
-      
     path: deployment
     repoURL: https://github.com/agbaroni/cloud-very-native-demo.git
