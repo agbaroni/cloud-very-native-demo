@@ -1,0 +1,9 @@
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  annotations:
+    openshift.io/display-name: Cloud (very) native demo
+  labels:
+    app: cvnd
+  name: cvnd
+spec: {}

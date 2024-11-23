@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    app: cvnd
+  name: example
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: cvnd
+    server: https://kubernetes.default.svc.cluster.local
+  project: cvnd
+  source:
+    helm:
+      
+    path: deployment
+    repoURL: https://github.com/agbaroni/cloud-very-native-demo.git
