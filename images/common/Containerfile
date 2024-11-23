@@ -1,4 +1,4 @@
-FROM registry.redhat.io/ubi9/ubi-minimal:latest
+FROM registry.fedoraproject.org/fedora-minimal:40
 
 ENV BOOST_MAJOR=0
 ENV BOOST_MINOR=0
