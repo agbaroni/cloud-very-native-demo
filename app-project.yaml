@@ -9,6 +9,6 @@ spec:
   description: Cloud (very) native demo
   destinations:
     - namespace: cvnd
-      server: https://kubernetes.default.svc.cluster.local
+      server: https://kubernetes.default.svc
   sourceRepos:
     - https://github.com/agbaroni/cloud-very-native-demo.git

@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     namespace: cvnd
-    server: https://kubernetes.default.svc.cluster.local
+    server: https://kubernetes.default.svc
   project: cvnd
   source:
     path: deployment
