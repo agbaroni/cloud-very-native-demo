@@ -1,8 +1,8 @@
 FROM registry.fedoraproject.org/fedora-minimal:40
 
-ENV BOOST_MAJOR=0
-ENV BOOST_MINOR=0
-ENV BOOST_MICRO=0
+ARG BOOST_MAJOR
+ARG BOOST_MINOR
+ARG BOOST_MICRO
 
 RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
  && /usr/bin/microdnf -y install cmake g++ libicu-devel ninja-build unzip which \
