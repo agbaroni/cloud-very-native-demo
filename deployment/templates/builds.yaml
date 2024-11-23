@@ -11,7 +11,7 @@ spec:
     image: image-registry.openshift-image-registry.svc:5000/cvnd/common:latest
   paramValues:
     - name: build-args
-      value:
+      values:
         - value: BOOST_MAJOR=1
         - value: BOOST_MINOR=86
         - value: BOOST_MICRO=0
