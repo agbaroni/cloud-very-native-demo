@@ -1,0 +1,14 @@
+---
+apiVersion: shipwright.io/v1beta1
+kind: Build
+metadata:
+  name: common
+  annotations:
+    build.shipwright.io/verify.repository: "true"
+spec:
+  source:
+    type: Git
+    git:
+      url: https://github.com/agbaroni/cloud-very-native-demo
+    contextDir: images/common
+
