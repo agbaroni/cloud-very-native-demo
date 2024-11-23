@@ -2,13 +2,25 @@
 apiVersion: shipwright.io/v1beta1
 kind: Build
 metadata:
-  name: common
   annotations:
     build.shipwright.io/verify.repository: "true"
+  name: common
+  namespace: cvnd
 spec:
+  env:
+    - name: BOOST_MAJOR
+      value: 1
+    - name: BOOST_MINOR
+      value: 86
+    - name: BOOST_MICRO
+      value: 0
+  output:
+    image: image-registry.openshift-image-registry.svc:5000/cvnd/common:latest
   source:
     type: Git
     git:
       url: https://github.com/agbaroni/cloud-very-native-demo
     contextDir: images/common
-
+  strategy:
+    kind: ClusterBuildStrategy
+    name: buildah

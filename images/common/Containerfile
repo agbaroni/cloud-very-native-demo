@@ -1,8 +1,8 @@
 FROM registry.redhat.io/ubi9/ubi-minimal:latest
 
-ARG BOOST_MAJOR=1
-ARG BOOST_MINOR=86
-ARG BOOST_MICRO=0
+ENV BOOST_MAJOR
+ENV BOOST_MINOR
+ENV BOOST_MICRO
 
 RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
  && /usr/bin/microdnf -y install cmake g++ libicu-devel ninja-build unzip which \
