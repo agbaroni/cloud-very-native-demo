@@ -6,6 +6,9 @@ metadata:
   name: cvnd
   namespace: openshift-gitops
 spec:
+  #clusterResourceWhitelist:
+  #  - group: project.openshift.io
+  #    kind: Project
   description: Cloud (very) native demo
   destinations:
     - namespace: cvnd
