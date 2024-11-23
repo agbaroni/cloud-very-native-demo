@@ -5,12 +5,12 @@ ARG BOOST_MINOR
 ARG BOOST_MICRO
 
 RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
- && /usr/bin/microdnf -y install cmake g++ libicu-devel ninja-build unzip which \
+ && /bin/bash -c '/usr/bin/microdnf -y install cmake g++ libicu-devel ninja-build unzip which > /dev/null' \
  && /usr/bin/curl -JLOk https://archives.boost.io/release/${BOOST_MAJOR}.${BOOST_MINOR}.${BOOST_MICRO}/source/boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO}.zip \
- && /usr/bin/unzip boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO}.zip \
+ && /usr/bin/unzip -qq boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO}.zip \
  && mv boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO} /boost
 
 WORKDIR /boost
 
-RUN /bin/bash bootstrap.sh --with-icu \
- && /boost/b2 install
+RUN /bin/bash -c '/bin/bash bootstrap.sh --with-icu > /dev/null' \
+ && /bin/bash -c '/boost/b2 install > /dev/null'
