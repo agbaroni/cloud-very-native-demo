@@ -16,6 +16,9 @@ spec:
       value: '0'
   output:
     image: image-registry.openshift-image-registry.svc:5000/cvnd/common:latest
+  paramValues:
+    - name: dockerfile
+      value: Containerfile
   source:
     type: Git
     git:
