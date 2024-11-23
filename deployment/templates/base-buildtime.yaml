@@ -3,7 +3,7 @@ kind: ImageStream
 metadata:
   labels:
     app: cvnd
-  name: base-buildtime
+  name: compilation
   namespace: cvnd
 spec:
   lookupPolicy:

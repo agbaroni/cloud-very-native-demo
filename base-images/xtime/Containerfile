@@ -1,0 +1,16 @@
+FROM registry.redhat.io/ubi9/ubi-minimal:latest
+
+ARG BOOST_MAJOR=1
+ARG BOOST_MINOR=86
+ARG BOOST_MICRO=0
+
+RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
+ && /usr/bin/microdnf -y install cmake g++ libicu-devel ninja unzip which \
+ && /usr/bin/curl https://archives.boost.io/release/1.${BOOST_MINOR}.0/source/boost_1_${BOOST_MINOR}_0.zip \
+ && /usr/bin/unzip boost_1_${BOOST_MINOR}_0.zip \
+ && mv boost_1_${BOOST_MINOR}_0 /boost
+
+WORKDIR /boost
+
+RUN /bin/bash bootstrap.sh --with-icu \
+ && /boost/b2 install
