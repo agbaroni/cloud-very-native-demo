@@ -12,9 +12,9 @@ spec:
   paramValues:
     - name: build-args
       value:
-        - BOOST_MAJOR=1
-        - BOOST_MINOR=86
-        - BOOST_MICRO=0
+        - value: BOOST_MAJOR=1
+        - value: BOOST_MINOR=86
+        - value: BOOST_MICRO=0
     - name: dockerfile
       value: Containerfile
   source:
