@@ -1,0 +1,25 @@
+---
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: launch-build
+  namespace: cvnd
+spec:
+  params:
+    - description: The name of a Build to run
+      name: build-name
+      type: string
+  steps:
+    - image: image-registry.openshift-image-registry.svc:5000/cvnd/openshift-client:latest
+      name: oc
+      script: |
+        cat <<EOF | /usr/local/bin/oc apply -f -
+        apiVersion: shipwright.io/v1beta1
+        kind: BuildRun
+        metadata:
+          name: $(params.build-name)-$RANDOM-$RANDOM
+          namespace: cvnd
+        spec:
+          build:
+            name: $(params.build-name)
+        EOF

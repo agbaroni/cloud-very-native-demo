@@ -1,0 +1,19 @@
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: launch-build
+  namespace: cvnd
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: launch-build-
+      spec:
+        params:
+          - name: build-name
+            value: common
+        pipelineRef:
+          name: launch-build
+        serviceAccountName: run-builds

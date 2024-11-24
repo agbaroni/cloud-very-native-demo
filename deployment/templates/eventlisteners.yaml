@@ -1,0 +1,11 @@
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: launch-builds
+  namespace: cvnd
+spec:
+  triggers:
+    - name: launch-builds
+      template:
+        ref: launch-builds

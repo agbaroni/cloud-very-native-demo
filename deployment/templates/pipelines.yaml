@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: launch-build
+  namespace: cvnd
+spec:
+  params:
+    - name: build-name
+      type: string
+      description: The name of a Build to run
+  tasks:
+    - name: launch-build
+      params:
+        - name: build-name
+          value: $(params.build-name)
+      taskRef:
+        name: launch-build

@@ -1,0 +1,15 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: el-launch-builds
+  namespace: cvnd
+spec:
+  to:
+    kind: Service
+    name: el-launch-builds
+  port:
+    targetPort: http-listener
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
