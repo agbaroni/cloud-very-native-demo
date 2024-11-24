@@ -2,7 +2,7 @@
 apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
-  name: launch-build
+  name: launch-builds
   namespace: cvnd
 spec:
   resourcetemplates:
