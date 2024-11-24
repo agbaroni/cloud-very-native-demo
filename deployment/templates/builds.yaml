@@ -13,7 +13,7 @@ spec:
   paramValues:
     - name: dockerfile
       value: Containerfile
-    - name: registry-search
+    - name: registries-search
       value: image-registry.openshift-image-registry.svc:5000/cvnd
   source:
     type: Git
