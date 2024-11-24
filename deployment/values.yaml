@@ -2,3 +2,4 @@ images:
   - common
   - compilation
   - execution
+  - openshift-client

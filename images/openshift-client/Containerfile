@@ -1,0 +1,12 @@
+FROM registry.fedoraproject.org/fedora-minimal:40 AS BUILD
+
+RUN /usr/bin/microdnf -y install gzip tar \
+ && /usr/bin/curl -JLOk https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/4.16.20/openshift-client-linux.tar.gz \
+ && /usr/bin/tar -xzf openshift-client-linux.tar.gz \
+ && /usr/bin/install -o root -g root oc /usr/local/bin/oc
+
+FROM registry.fedoraproject.org/fedora-minimal:40
+
+COPY --from=BUILD /usr/local/bin/oc /usr/local/bin/oc
+
+USER 185

@@ -1,3 +1,5 @@
 FROM cvnd/common:latest
 
 RUN /usr/bin/microdnf -y install boost-devel cmake g++ ninja-build
+
+USER 185
