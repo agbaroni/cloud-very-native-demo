@@ -5,8 +5,7 @@ metadata:
   name: run-builds
   namespace: cvnd
 subjects:
-  - apiGroup: v1
-    kind: ServiceAccount
+  - kind: ServiceAccount
     name: run-builds
 roleRef:
   apiGroup: rbac.authorization.k8s.io
