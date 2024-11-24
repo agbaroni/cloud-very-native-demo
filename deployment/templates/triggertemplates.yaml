@@ -9,8 +9,8 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: launch-build-
+        generateName: launch-builds-
       spec:
         pipelineRef:
-          name: launch-build
+          name: launch-builds
         serviceAccountName: run-builds
