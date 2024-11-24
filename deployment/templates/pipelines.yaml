@@ -15,11 +15,13 @@ spec:
       params:
         - name: build-name
           value: compilation
+      runAfter: launch-build-common
       taskRef:
         name: launch-build
     - name: launch-build-execution
       params:
         - name: build-name
           value: execution
+      runAfter: launch-build-compilation
       taskRef:
         name: launch-build
