@@ -1,27 +1,25 @@
----
+{{- range .Values.images }}
 apiVersion: shipwright.io/v1beta1
 kind: Build
 metadata:
   annotations:
     build.shipwright.io/verify.repository: "true"
-  name: common
+  name: {{ . }}
   namespace: cvnd
 spec:
   output:
-    image: image-registry.openshift-image-registry.svc:5000/cvnd/common:latest
+    image: image-registry.openshift-image-registry.svc:5000/cvnd/{{ . }}:latest
   paramValues:
-    - name: build-args
-      values:
-        - value: BOOST_MAJOR=1
-        - value: BOOST_MINOR=86
-        - value: BOOST_MICRO=0
     - name: dockerfile
       value: Containerfile
+    - name: registry-search
+      value: image-registry.openshift-image-registry.svc:5000/cvnd
   source:
     type: Git
     git:
       url: https://github.com/agbaroni/cloud-very-native-demo
-    contextDir: images/common
+    contextDir: images/{{ . }}
   strategy:
     kind: ClusterBuildStrategy
     name: buildah
+{{- end }}
