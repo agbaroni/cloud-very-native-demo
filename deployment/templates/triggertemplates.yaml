@@ -11,9 +11,6 @@ spec:
       metadata:
         generateName: launch-build-
       spec:
-        params:
-          - name: build-name
-            value: common
         pipelineRef:
           name: launch-build
         serviceAccountName: run-builds
