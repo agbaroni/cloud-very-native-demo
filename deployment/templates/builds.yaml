@@ -13,6 +13,11 @@ spec:
   paramValues:
     - name: dockerfile
       value: Containerfile
+    - name: registries-search
+      values:
+        - value: image-registry.openshift-image-registry.svc:5000
+        - value: registry.redhat.io
+        - value: quay.io
   source:
     type: Git
     git:
