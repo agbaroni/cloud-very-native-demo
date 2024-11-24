@@ -1,4 +1,5 @@
 {{- range .Values.images }}
+---
 apiVersion: shipwright.io/v1beta1
 kind: Build
 metadata:
