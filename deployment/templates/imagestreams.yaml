@@ -1,33 +1,13 @@
+{{- range .Values.images }}
 ---
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   labels:
     app: cvnd
-  name: common
+  name: {{ . }}
   namespace: cvnd
 spec:
   lookupPolicy:
     local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  labels:
-    app: cvnd
-  name: compilation
-  namespace: cvnd
-spec:
-  lookupPolicy:
-    local: true
----
-apiVersion: image.openshift.io/v1
-kind: ImageStream
-metadata:
-  labels:
-    app: cvnd
-  name: execution
-  namespace: cvnd
-spec:
-  lookupPolicy:
-    local: true
+{{- end }}
