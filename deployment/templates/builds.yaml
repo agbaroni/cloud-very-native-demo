@@ -15,9 +15,9 @@ spec:
       value: Containerfile
     - name: registries-search
       values:
-        - image-registry.openshift-image-registry.svc:5000/cvnd
-        - registry.redhat.io
-        - quay.io
+        - value: image-registry.openshift-image-registry.svc:5000/cvnd
+        - value: registry.redhat.io
+        - value: quay.io
   source:
     type: Git
     git:
