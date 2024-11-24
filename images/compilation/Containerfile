@@ -1,0 +1,10 @@
+FROM registry.fedoraproject.org/fedora-minimal:40
+
+RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
+ && 
+
+RUN /bin/bash -c 'echo install_weak_deps=False >> /etc/dnf/dnf.conf' \
+ && /usr/bin/microdnf -y install cmake g++ libicu-devel ninja-build unzip \
+ && /usr/bin/curl -JLOk https://archives.boost.io/release/${BOOST_MAJOR}.${BOOST_MINOR}.${BOOST_MICRO}/source/boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO}.zip \
+ && /usr/bin/unzip -qq boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO}.zip \
+ && mv boost_${BOOST_MAJOR}_${BOOST_MINOR}_${BOOST_MICRO} /boost
