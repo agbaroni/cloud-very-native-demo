@@ -5,7 +5,7 @@ kind: ImageStream
 metadata:
   labels:
     app: cvnd
-  name: {{ . }}
+  name: {{ .name }}
   namespace: cvnd
 spec:
   lookupPolicy:
