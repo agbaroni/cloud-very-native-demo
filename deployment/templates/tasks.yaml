@@ -11,7 +11,7 @@ spec:
       type: string
   steps:
     - image: image-registry.openshift-image-registry.svc:5000/cvnd/openshift-client:latest
-      name: oc
+      name: oc-run
       script: |
         cat <<EOF | /usr/local/bin/oc apply -f -
         apiVersion: shipwright.io/v1beta1
@@ -23,3 +23,14 @@ spec:
           build:
             name: $(params.build-name)
         EOF
+    - image: image-registry.openshift-image-registry.svc:5000/cvnd/openshift-client:latest
+      name: oc-check
+      script: |
+        while true; do
+          R=$(oc get buildrun execution-1-1 -ojsonpath='{.status.conditions[0].reason}')
+          if [ "$R" != "Running" ]; then
+            echo "Unexpected status: $R"
+            break
+          fi
+        done
+
