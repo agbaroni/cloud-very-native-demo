@@ -1,7 +1,4 @@
 images:
-  #- name: application-compilation
-  #  dependencies:
-  #    - compilation
   #- name: application-execution
   #  dependencies: []
   - name: common
@@ -18,3 +15,7 @@ images:
   - name: openshift-client
     dependencies: []
     pipeline: false
+  - name: application-compilation
+    dependencies:
+      - compilation
+    pipeline: true
