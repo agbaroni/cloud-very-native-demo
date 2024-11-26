@@ -35,11 +35,10 @@ spec:
         while true; do
           R=$(oc get buildrun $NAME -ojsonpath='{.status.conditions[0].reason}')
           if [ -n "$R" ]; then
-            if [ "$R" != "Running" ]; then
-              if [ "$R" != "Succeeded" ]; then
-                echo "Unexpected status: $R"
-              fi
+            echo "$R ..."
+            if [ "$R" == "Succeeded" ]; then
               break
             fi
+            sleep 1s
           fi
         done
