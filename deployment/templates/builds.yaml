@@ -22,7 +22,7 @@ spec:
     type: Git
     git:
       url: https://github.com/agbaroni/cloud-very-native-demo
-    contextDir: images/{{ .name }}
+    contextDir: {{ .contextDir }}
   strategy:
     kind: ClusterBuildStrategy
     name: buildah

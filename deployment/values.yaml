@@ -4,18 +4,23 @@ images:
   - name: common
     dependencies: []
     pipeline: true
+    contextDir: images/common
   - name: compilation
     dependencies:
       - common
     pipeline: true
+    contextDir: images/compilation
   - name: execution
     dependencies:
       - common
     pipeline: true
+    contextDir: images/execution
   - name: openshift-client
     dependencies: []
     pipeline: false
+    contextDir: images/openshift-client
   - name: application-compilation
     dependencies:
       - compilation
     pipeline: true
+    contextDir: development
