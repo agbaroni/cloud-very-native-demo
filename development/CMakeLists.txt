@@ -6,6 +6,14 @@ SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 PROJECT(CVND VERSION 1.0.0 LANGUAGES CXX)
 
-INCLUDE_DIRECTORIES(headers)
+FIND_PACKAGE(Boost CONFIG REQUIRED COMPONENTS chrono date_time filesystem thread)
 
-ADD_EXECUTABLE(cvnd sources/main.cpp)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS} headers)
+
+ADD_EXECUTABLE(cvnd sources/core/main.cpp)
+
+TARGET_LINK_LIBRARIES(cvnd ${Boost_LIBRARIES})
+
+ADD_LIBRARY(p1 SHARED sources/plugins/p1.cpp)
+
+ADD_LIBRARY(p2 SHARED sources/plugins/p2.cpp)
