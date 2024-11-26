@@ -26,15 +26,15 @@ spec:
   strategy:
     kind: ClusterBuildStrategy
     name: buildah
-  {{- if .dependencies -}}
+  {{- if .dependencies }}
   triggers:
     when:
-      {{- range .dependencies -}}
+      {{- range .dependencies }}
       - name: {{ . }}
         type: Image
         image:
           names:
             - image-registry.openshift-image-registry.svc:5000/cvnd/{{ . }}:latest
-      {{- end -}}
-  {{- end -}}
+      {{- end }}
+  {{- end }}
 {{- end }}
