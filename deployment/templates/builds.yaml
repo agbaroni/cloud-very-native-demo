@@ -27,7 +27,7 @@ spec:
     kind: ClusterBuildStrategy
     name: buildah
   {{- if .dependencies }}
-  triggers:
+  trigger:
     when:
       {{- range .dependencies }}
       - name: Watching {{ . }}
