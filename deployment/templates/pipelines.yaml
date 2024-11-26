@@ -5,9 +5,19 @@ metadata:
   namespace: cvnd
 spec:
   tasks:
-    - name: launch-build-common
+  {{- range .Values.images }}
+    {{- if .pipeline }}
+    - name: launch-build-{{ .name }}
       params:
         - name: build-name
-          value: common
+          value: {{ .name }}
       taskRef:
         name: launch-build
+      {{- if .dependencies }}
+      runAfter:
+        {{- range .dependencies }}
+        - launch-build-{{ . }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
