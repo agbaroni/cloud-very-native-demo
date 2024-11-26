@@ -28,7 +28,7 @@ spec:
     name: buildah
   {{- if .dependencies }}
   trigger:
-    when: []
+    when:
       {{- range .dependencies }}
       - name: Watching {{ . }}
         type: Image
