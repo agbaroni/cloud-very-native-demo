@@ -1,7 +1,16 @@
 images:
-  - application-compilation
-  - application-execution
-  - common
-  - compilation
-  - execution
-  - openshift-client
+  - name: application-compilation
+    dependencies:
+      - compilation
+  - name: application-execution
+    dependencies: []
+  - name: common
+    dependencies: []
+  - name: compilation
+    dependencies:
+      - common
+  - name: execution
+    depencencies:
+      - common
+  - name: openshift-client
+    dependencies: []

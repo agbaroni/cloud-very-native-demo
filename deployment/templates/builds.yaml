@@ -5,11 +5,11 @@ kind: Build
 metadata:
   annotations:
     build.shipwright.io/verify.repository: "true"
-  name: {{ . }}
+  name: {{ .name }}
   namespace: cvnd
 spec:
   output:
-    image: image-registry.openshift-image-registry.svc:5000/cvnd/{{ . }}:latest
+    image: image-registry.openshift-image-registry.svc:5000/cvnd/{{ .name }}:latest
   paramValues:
     - name: dockerfile
       value: Containerfile
@@ -22,8 +22,19 @@ spec:
     type: Git
     git:
       url: https://github.com/agbaroni/cloud-very-native-demo
-    contextDir: images/{{ . }}
+    contextDir: images/{{ .name }}
   strategy:
     kind: ClusterBuildStrategy
     name: buildah
+  {{- if gt (len .dependencies) 0 -}}
+  triggers:
+    when:
+      {{- range .dependencies -}}
+      - name: {{ . }}
+        type: Image
+        image:
+          names:
+            - image-registry.openshift-image-registry.svc:5000/cvnd/{{ . }}:latest
+      {{- end -}}
+  {{- end -}}
 {{- end }}
