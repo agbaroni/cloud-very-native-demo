@@ -30,7 +30,7 @@ spec:
   triggers:
     when:
       {{- range .dependencies }}
-      - name: {{ . }}
+      - name: Watching {{ . }}
         type: Image
         image:
           names:

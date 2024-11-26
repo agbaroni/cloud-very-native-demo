@@ -1,8 +1,8 @@
 images:
-  - name: application_compilation
+  - name: application-compilation
     dependencies:
       - compilation
-  - name: application_execution
+  - name: application-execution
     dependencies: []
   - name: common
     dependencies: []
@@ -12,5 +12,5 @@ images:
   - name: execution
     depencencies:
       - common
-  - name: openshift_client
+  - name: openshift-client
     dependencies: []
