@@ -1,7 +1,5 @@
 FROM cvnd/compilation:latest
 
-WORKDIR ../../development
-
-RUN /usr/bin/cmake -S . -B _build -G Ninja \
+RUN /usr/bin/cmake -S ../../development -B _build -G Ninja \
  && /usr/bin/cmake --build _build \
  && /usr/bin/cmake --install _build
