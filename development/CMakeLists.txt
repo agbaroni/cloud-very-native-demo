@@ -17,3 +17,5 @@ TARGET_LINK_LIBRARIES(cvnd ${Boost_LIBRARIES})
 ADD_LIBRARY(p1 SHARED sources/plugins/p1.cpp)
 
 ADD_LIBRARY(p2 SHARED sources/plugins/p2.cpp)
+
+INSTALL(TARGETS cvnd p1 p2)

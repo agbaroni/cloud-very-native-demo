@@ -1,4 +1,6 @@
 images:
+  - application-compilation
+  - application-execution
   - common
   - compilation
   - execution
