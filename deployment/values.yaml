@@ -12,7 +12,7 @@ images:
       - common
     pipeline: true
   - name: execution
-    depencencies:
+    dependencies:
       - common
     pipeline: true
   - name: openshift-client
