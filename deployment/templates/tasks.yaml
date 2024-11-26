@@ -9,15 +9,20 @@ spec:
     - description: The name of a Build to run
       name: build-name
       type: string
+  results:
+    - description: The BuildRun's name
+      name: buildrun-name
   steps:
     - image: image-registry.openshift-image-registry.svc:5000/cvnd/openshift-client:latest
       name: oc-run
       script: |
+        NAME=$(params.build-name)-$RANDOM-$RANDOM
+        echo $NAME > $(results.buildrun-name.path)
         cat <<EOF | /usr/local/bin/oc apply -f -
         apiVersion: shipwright.io/v1beta1
         kind: BuildRun
         metadata:
-          name: $(params.build-name)-$RANDOM-$RANDOM
+          name: $NAME
           namespace: cvnd
         spec:
           build:
@@ -27,10 +32,12 @@ spec:
       name: oc-check
       script: |
         while true; do
-          R=$(oc get buildrun execution-1-1 -ojsonpath='{.status.conditions[0].reason}')
+          R=$(oc get buildrun $(cat $(results.buildrun-name.path)) -ojsonpath='{.status.conditions[0].reason}')
           if [ "$R" != "Running" ]; then
-            echo "Unexpected status: $R"
-            break
+            if [ "$R" != "Succeeded" ]; then
+              echo "Unexpected status: $R"
+              break
+            fi
           fi
         done
 
